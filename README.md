@@ -31,18 +31,29 @@ Dockerfile is Created in Env/Prod/Dockerfile path
 7- Visit http://localhost:3000/metrics to see the Prometheus metrics, including the request counter.
 
 **Deploying Demo API with CircleCI**
+
 This README provides instructions on how to deploy a demo API created with Node.js and Express using CircleCI. The deployment process includes building a Docker image and deploying it 
+
 **Prerequisites**
+
 Docker- installed on your local machine.
+
 CircleCI account linked to your GitHub or Bitbucket repository.
+
 AWS ECR access for Docker image storage.
+
 Environment variables for AWS credentials and other necessary configuration set in CircleCI.
 
 **Setting Up CircleCI**
+
 Create a CircleCI Project:
-- Log in to your CircleCI account.
--Add your repository as a project.
+
+Log in to your CircleCI account.
+
+Add your repository as a project.
+
 Add Environment Variables:
+
 Go to your project settings in CircleCI and add the following environment variables:
 
 AWS_Demo_ACCESS_KEY
