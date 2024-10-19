@@ -70,22 +70,37 @@ example git tag v1.0.0
 **To deploy your Node.js API service on a Kubernetes environment and verify that it works as expected, follow these detailed steps. For this example.** 
 
 Set Up Your Kubernetes Environment
+
 If you haven't already set up a Kubernetes environment, here's how to do it for Minikube:
+
 1- Install Minikube
+
 2- Start Minikube:
+
    minikube start
+   
 3- Create deployment.yml and service.yml (code has both file present)
+
 Apply the deployment and service
+
 kubectl apply -f deployment.yaml
+
 kubectl apply -f service.yaml
 
 4- Check the Pods: After deploying, check the status of your pods to ensure they are running.
+
    kubectl get pods
+   
 5- Check the Service: Get details of your service to find out how to access it.
+
    kubectl get services
+   
 6- Get Minikube IP: If you're using Minikube, get the Minikube IP:
+
    minikube ip 
+   
    Access Your Service
+   
    http://<minikube-ip>:<node-port>
  
 
