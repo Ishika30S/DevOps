@@ -3,7 +3,8 @@
 Clone the Repository
 git clone <repository-url>
 cd <repository-name>
-#Dockerfile is Created in Env/Prod/Dockerfile path 
+
+Dockerfile is Created in Env/Prod/Dockerfile path 
 
 **Setup in you local system**
 
@@ -28,7 +29,7 @@ cd <repository-name>
 7- Visit http://localhost:3000/metrics to see the Prometheus metrics, including the request counter.
 
 **Deploying Demo API with CircleCI**
-his README provides instructions on how to deploy a demo API created with Node.js and Express using CircleCI. The deployment process includes building a Docker image and deploying it 
+This README provides instructions on how to deploy a demo API created with Node.js and Express using CircleCI. The deployment process includes building a Docker image and deploying it 
 **Prerequisites**
 Docker- installed on your local machine.
 CircleCI account linked to your GitHub or Bitbucket repository.
@@ -43,15 +44,19 @@ Add Environment Variables:
 Go to your project settings in CircleCI and add the following environment variables:
 
 AWS_Demo_ACCESS_KEY
+
 AWS_Demo_SECRET_KEY
+
 AWS_REGION 
+
 and add SSH Private key # circleci directory is added in github 
 
 After setting Create tag for the deployment through branch you want to deploy 
 example git tag v1.0.0
 
 **To deploy your Node.js API service on a Kubernetes environment and verify that it works as expected, follow these detailed steps. For this example.** 
- Set Up Your Kubernetes Environment
+
+Set Up Your Kubernetes Environment
 If you haven't already set up a Kubernetes environment, here's how to do it for Minikube:
 1- Install Minikube
 2- Start Minikube:
