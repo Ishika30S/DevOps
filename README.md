@@ -101,7 +101,7 @@ kubectl apply -f service.yaml
    
    Access Your Service
    
-   http://<minikube-ip>:<node-port>
+   http://minikube-ip:node-port
  
 
 
