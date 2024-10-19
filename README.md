@@ -55,7 +55,7 @@ If you haven't already set up a Kubernetes environment, here's how to do it for 
 2- Start Minikube:
    minikube start
 3- Create deployment.yml and service.yml (code has both file present)
-# Apply the deployment and service
+Apply the deployment and service
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
 
@@ -66,7 +66,7 @@ kubectl apply -f service.yaml
 6- Get Minikube IP: If you're using Minikube, get the Minikube IP:
    minikube ip 
    Access Your Service
-  http://<minikube-ip>:<node-port>
+   http://<minikube-ip>:<node-port>
  
 
 
