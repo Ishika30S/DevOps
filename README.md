@@ -64,6 +64,8 @@ AWS_REGION
 
 and add SSH Private key # circleci directory is added in github 
 
+Add nginx configuration for routes
+
 After setting Create tag for the deployment through branch you want to deploy 
 example git tag v1.0.0
 
@@ -104,6 +106,7 @@ kubectl apply -f service.yaml
    http://minikube-ip:node-port
  
 
+Note - Change AWS ACCESS KEYS and SECRET KEYS w.r.t your credentials.
 
 
 
