@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-demo
+  template:
+    metadata:
+      labels:
+        app: api-demo
+    spec:
+      imagePullSecrets:
+      - name: ecr-registry
+      containers:
+      - name: api-demo
+        image: 586435199027.dkr.ecr.us-east-1.amazonaws.com/demoapi:latest
+        ports:
+        - containerPort: 3000
