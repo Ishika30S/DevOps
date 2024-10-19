@@ -54,13 +54,13 @@ workflows:
   version: 2.1
   build_and_deploy_prod:
     jobs:
-    - build-qa:
+    - build-prod:
         filters:
           branches:
             ignore: /.*/
           tags:
               only: /^v[0-9]+(\.[0-9]+)+(\.[0-9]+)-prod.*$/
-    - deploy-qa:
+    - deploy-prod:
          requires:
             - build-prod
          filters:
