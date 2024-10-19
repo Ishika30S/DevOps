@@ -1,8 +1,8 @@
 **This is a demo API created with Node.js and Express. The API serves a simple HTML form and responds with details of the incoming request, including headers, method, and body. It also includes Prometheus metrics for tracking the number of requests received.**
 
 Clone the Repository
-git clone <repository-url>
-cd <repository-name>
+git clone repository-url
+cd repository-name
 
 Dockerfile is Created in Env/Prod/Dockerfile path 
 
@@ -21,7 +21,7 @@ Dockerfile is Created in Env/Prod/Dockerfile path
    docker ps
 
 5- To check the logs of container 
-   docker logs <container_id>
+   docker logs container_id
 
 6- To access the application 
    http://localhost:3000
