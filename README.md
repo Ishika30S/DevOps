@@ -1,10 +1,10 @@
 **This is a demo API created with Node.js and Express. The API serves a simple HTML form and responds with details of the incoming request, including headers, method, and body. It also includes Prometheus metrics for tracking the number of requests received.**
 Clone the Repository
-  git clone <repository-url>
-  cd <repository-name>
- #Dockerfile is Created in Env/Prod/Dockerfile path 
+git clone <repository-url>
+cd <repository-name>
+#Dockerfile is Created in Env/Prod/Dockerfile path 
 
-**Setup in you local system **
+**Setup in you local system**
 1- Building Docker image
    docker build -t demoapi -f Env/Prod/Dockerfile .
 
