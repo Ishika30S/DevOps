@@ -1,0 +1,70 @@
+version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@7.0.0
+  aws-cli: circleci/aws-cli@2.0.0
+executors:
+  default:
+    docker:
+    - image: alpine:latest 
+commands:
+  install_dependencies_prod:
+    steps:
+      - run: apk add openssh sshpass --no-cache
+
+  ssh_instance_prod:
+    steps:
+      - run:
+          name: SSH into remote instance and deploy the latest image from ECR
+          command: |
+            ssh -o StrictHostKeyChecking=no ec2-user@35.170.61.219 './Demo.sh';           
+
+jobs:
+  build-prod:
+    docker:
+      - image: docker:20.10.6
+    steps:
+      - setup_remote_docker
+      - checkout
+      - run:
+          name: Install AWS CLI
+          command: |
+            apk add --no-cache py3-pip
+            pip3 install awscli
+      - aws-cli/setup:
+          aws-access-key-id: AWS_Demo_ACCESS_KEY
+          aws-secret-access-key: AWS_Demo_SECRET_KEY
+          aws-region: AWS_REGION
+      - run:
+          name: docker build
+          command: |
+            docker build -t aftermarket-dev-backend -f Env/Prod/Dockerfile .
+      - run:
+          name: push
+          command: |
+            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 586435199027.dkr.ecr.us-east-1.amazonaws.com
+            docker tag 586435199027.dkr.ecr.us-east-1.amazonaws.com/demoapi:latest 
+            docker push 586435199027.dkr.ecr.us-east-1.amazonaws.com/demoapi:latest
+  deploy-prod:
+    executor: default
+    steps:
+      - install_dependencies_prod
+      - ssh_instance_prod
+
+workflows:
+  version: 2.1
+  build_and_deploy_prod:
+    jobs:
+    - build-qa:
+        filters:
+          branches:
+            ignore: /.*/
+          tags:
+              only: /^v[0-9]+(\.[0-9]+)+(\.[0-9]+)-prod.*$/
+    - deploy-qa:
+         requires:
+            - build-prod
+         filters:
+           branches:
+             ignore: /.*/
+           tags:
+             only: /^v[0-9]+(\.[0-9]+)+(\.[0-9]+)-prod.*$/
