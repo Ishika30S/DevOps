@@ -37,12 +37,12 @@ jobs:
       - run:
           name: docker build
           command: |
-            docker build -t aftermarket-dev-backend -f Env/Prod/Dockerfile .
+            docker build -t demoapi -f Env/Prod/Dockerfile .
       - run:
           name: push
           command: |
             aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 586435199027.dkr.ecr.us-east-1.amazonaws.com
-            docker tag 586435199027.dkr.ecr.us-east-1.amazonaws.com/demoapi:latest 
+            docker tag demoapi:latest 586435199027.dkr.ecr.us-east-1.amazonaws.com/demoapi:latest 
             docker push 586435199027.dkr.ecr.us-east-1.amazonaws.com/demoapi:latest
   deploy-prod:
     executor: default
