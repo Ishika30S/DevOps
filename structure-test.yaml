@@ -1,0 +1,13 @@
+version: '1'  # Required schema version
+
+tests:
+  - name: Check if index.js exists
+    path: demo-app/index.js
+    type: file
+    exist: true
+
+  - name: Check if PORT environment variable is set
+    type: env
+    name: PORT
+    expected: "3000"  # Change this to your expected value
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Demo</title>
+</head>
+<body>
+    <h1>Welcome to our demo API!</h1> <!-- This is the new line added -->
+    
+    <h2>Enter your username and password</h2>
+    <form id="apiForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2 id="responseMessage"></h2> <!-- Area to display the response message -->
+
+    <script>
+        // Get the form element
+        const form = document.getElementById('apiForm');
+
+        // Handle form submission
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent default form submission behavior
+
+            // Get form data
+            const formData = new FormData(form);
+            const data = {
+                username: formData.get('username'),
+                password: formData.get('password'),
+            };
+
+            try {
+                // Send the POST request to the API
+                const response = await fetch('/api', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                // Parse the JSON response
+                const result = await response.json();
+
+                // Display the welcome message on the page
+                document.getElementById('responseMessage').textContent = result.message;
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('responseMessage').textContent = 'Something went wrong.';
+            }
+        });
+    </script>
+</body>
+</html>
